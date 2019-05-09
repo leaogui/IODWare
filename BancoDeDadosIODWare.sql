@@ -33,7 +33,7 @@ pfc boolean
 );
 
 create table cpu(
-id_cpu int primary key,
+id_cpu int primary key,               	
 nome varchar (100),
 modelo varchar(50),
 socket varchar (100),
