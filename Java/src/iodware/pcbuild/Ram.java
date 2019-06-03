@@ -16,4 +16,34 @@ public class Ram {
 	public int clock;
 	public int size;
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getGen() {
+		return gen;
+	}
+	public void setGen(String gen) {
+		this.gen = gen;
+	}
+	
+	public int getClock() {
+		return clock;
+	}
+	public void setClock(int clock) {
+		this.clock = clock;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	
+	
+	
 }

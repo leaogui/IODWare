@@ -18,5 +18,49 @@ public class Mobo {
 	public int slotmemo;
 	public int slotpci;
 	public String saidas;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	
+	public String getSocket() {
+		return socket;
+	}
+	public void setSocket(String socket) {
+		this.socket = socket;
+	}
+	
+	public int getSlotmemo() {
+		return slotmemo;
+	}
+	public void setSlotmemo(int slotmemo) {
+		this.slotmemo = slotmemo;
+	}
+	
+	public int getSlotpci() {
+		return slotpci;
+	}
+	public void setSlotpci(int slotpci) {
+		this.slotpci = slotpci;
+	}
+	
+	public String getSaidas() {
+		return saidas;
+	}
+	public void setSaidas(String saidas) {
+		this.saidas = saidas;
+	}
+	
+	
 
 }
