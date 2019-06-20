@@ -3,7 +3,7 @@ package iodware.pcbuild;
 public class Cpu {
 	
 	
-	public Cpu(int clock, String nome, String cores, String modelo, String socket, String gen, boolean mthread) {
+	public Cpu(int clock, String nome, String cores, String modelo, String socket, String gen, boolean mthread, int pdu) {
 
 		this.clock = clock;
 		this.nome = nome;
@@ -12,6 +12,7 @@ public class Cpu {
 		this.socket = socket;
 		this.gen = gen;
 		this.mthread = mthread;
+		this.pdu = pdu;
 	}
 	
 	public int clock;
@@ -21,6 +22,7 @@ public class Cpu {
 	public String socket;
 	public String gen;
 	public boolean mthread;
+	public int pdu;
 	
 	public int getClock() {
 		return clock;
@@ -71,6 +73,13 @@ public class Cpu {
 		this.mthread = mthread;
 	} 
 	
+	public void setPdu(int pdu) {
+		this.pdu = pdu;
+	}
+	
+	public int getPdu() {
+		return this.pdu;
+	}
 	
 	
 }

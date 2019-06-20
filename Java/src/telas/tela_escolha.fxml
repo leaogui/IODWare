@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="412.0" fitWidth="613.0" layoutX="-7.0" layoutY="-6.0">
+         <image>
+            <Image url="@../../imagens/fundopreto.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="487.0" layoutY="361.0" mnemonicParsing="false" text="Finalizar" />
+      <Button layoutX="42.0" layoutY="361.0" mnemonicParsing="false" text="Voltar" />
+      <Label layoutX="239.0" layoutY="27.0" text="Escolha as peças" textFill="WHITE" />
+      <MenuButton layoutX="209.0" layoutY="82.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="209.0" layoutY="134.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="209.0" layoutY="188.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="209.0" layoutY="240.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="209.0" layoutY="289.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <Label layoutX="82.0" layoutY="86.0" text="Placa Mãe" textFill="WHITE" />
+      <Label layoutX="82.0" layoutY="138.0" text="Processador" textFill="WHITE" />
+      <Label layoutX="82.0" layoutY="192.0" text="Placa de Vídeo" textFill="WHITE" />
+      <Label layoutX="82.0" layoutY="244.0" text="Memória Ram" textFill="WHITE" />
+      <Label layoutX="82.0" layoutY="293.0" text="Fonte" textFill="WHITE" />
+   </children>
+</AnchorPane>

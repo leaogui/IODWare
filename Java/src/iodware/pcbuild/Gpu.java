@@ -3,7 +3,7 @@ package iodware.pcbuild;
 public class Gpu {
 
 	
-	public Gpu(int clock, String nome, String memory, String modelo, String slot, int ventoinhas, String saidas) {
+	public Gpu(int clock, String nome, String memory, String modelo, String slot, int ventoinhas, String saidas, int pdu) {
 
 		this.clock = clock;
 		this.nome = nome;
@@ -11,7 +11,8 @@ public class Gpu {
 		this.modelo = modelo;
 		this.slot = slot;
 		this.ventoinhas = ventoinhas;
-		Saidas = saidas;
+		this.Saidas = saidas;
+		this.pdu = pdu;
 	}
 	
 	public int clock;
@@ -21,6 +22,7 @@ public class Gpu {
 	public String slot;
 	public int ventoinhas;
 	public String Saidas;
+	public int pdu;
 	
 	
 	public int getClock() {
@@ -72,6 +74,13 @@ public class Gpu {
 		Saidas = saidas;
 	}
 	
+	public void setPdu(int pdu) {
+		this.pdu = pdu;
+	}
+	
+	public int getPdu() {
+		return this.pdu;
+	}
 	
 	
 }
