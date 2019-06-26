@@ -14,7 +14,7 @@
       </ImageView>
       <Button fx:id="botaofinalizar" layoutX="487.0" layoutY="361.0" mnemonicParsing="false" onAction="#finalizar" text="Finalizar" />
       <Button fx:id="botaovoltar" layoutX="42.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Label layoutX="239.0" layoutY="27.0" text="Escolha as peças" textFill="WHITE" />
+      <Label fx:id="labeltopo" layoutX="239.0" layoutY="27.0" text="Escolha as peças" textFill="WHITE" />
       <Label layoutX="82.0" layoutY="86.0" text="Placa Mãe" textFill="WHITE" />
       <Label layoutX="82.0" layoutY="138.0" text="Processador" textFill="WHITE" />
       <Label layoutX="82.0" layoutY="192.0" text="Placa de Vídeo" textFill="WHITE" />

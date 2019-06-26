@@ -45,6 +45,15 @@ public class MoboController implements Initializable{
 		
 	}
 	
+	public void checar() throws IOException {
+		
+		String nome;
+		
+		nome = boxmobo.getValue();
+		
+		
+	}
+	
 	public void voltar() throws IOException {
 		Stage stage = (Stage) botaovoltar.getScene().getWindow();
 		Parent voltar = FXMLLoader.load(getClass().getResource("../../telas/tela_componentes.fxml"));

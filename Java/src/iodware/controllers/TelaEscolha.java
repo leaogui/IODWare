@@ -5,6 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import iodware.actions.Creator;
+import iodware.pcbuild.Cpu;
+import iodware.pcbuild.Gpu;
+import iodware.pcbuild.Mobo;
+import iodware.pcbuild.Psu;
+import iodware.pcbuild.Ram;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class TelaEscolha implements Initializable{
@@ -32,6 +38,8 @@ public class TelaEscolha implements Initializable{
 	public ChoiceBox<String> boxmobo;
 	@FXML
 	public ChoiceBox<String> boxram;
+	@FXML
+	public Label labeltopo;
 	
 	public String nomeGpu;
 	public String nomeCpu;
@@ -129,15 +137,22 @@ public class TelaEscolha implements Initializable{
 		nomeRam = boxram.getValue();
 		nomeMobo = boxmobo.getValue();
 		
+		Gpu gpu = criador.criarGpu(nomeGpu);
+		Cpu cpu = criador.criarCpu(nomeCpu);
+		Psu psu = criador.criarPsu(nomePsu);
+		Ram ram = criador.criarRam(nomeRam);
+		Mobo mobo = criador.criarMobo(nomeMobo);
 		
-		
-		
+		if(mobo.getSocket() != cpu.getSocket()) {
+			labeltopo.setText("O Socket da placa mãe não pode ser diferente do socket do processador!");
+		}
+		else {
 		Stage stage = (Stage) botaofinalizar.getScene().getWindow();
 		Parent finali = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));
 		Scene scene = new Scene(finali);
 		stage.setScene(scene);
-		stage.setResizable(false);
+		stage.setResizable(false);	
 		stage.show();
+		}
 	}
-	
 }

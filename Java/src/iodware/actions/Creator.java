@@ -1,5 +1,8 @@
 package iodware.actions;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import iodware.pcbuild.Cpu;
 import iodware.pcbuild.Gpu;
 import iodware.pcbuild.Mobo;
@@ -74,6 +77,7 @@ public class Creator {
 	
 	public Mobo criarMobo(String nomebox) {
 		
+		
 		String nome;
 		String modelo;
 		String socket;
@@ -85,9 +89,6 @@ public class Creator {
 		
 		return mobo;
 	}
-	
-	
-	
 	
 	
 	
