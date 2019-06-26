@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import iodware.actions.Creator;
+import iodware.pcbuild.Psu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class PsuController implements Initializable{
@@ -20,9 +23,21 @@ public class PsuController implements Initializable{
 	@FXML
 	private Button botaovoltar;
 	@FXML
+	private Button checar;
+	@FXML
 	public ChoiceBox<String> boxpsu;
+	@FXML
+	public Label nomepsu;
+	@FXML
+	public Label wattspsu;
+	@FXML
+	public Label eighty;
+	@FXML
+	public Label pfc;
 	
 	ObservableList<String> listpsu = FXCollections.observableArrayList();
+	
+	Creator c = new Creator();
 	
 	public void valores_psu() {
 		listpsu.removeAll();
@@ -46,7 +61,16 @@ public class PsuController implements Initializable{
 		
 		nome = boxpsu.getValue();
 		
+		Psu psu = c.criarPsu(nome);
 		
+		nomepsu.setText(psu.getNome());
+		wattspsu.setText(Integer.toString(psu.getWatts()));
+		eighty.setText(psu.getEightyP());
+		if(psu.getPfc() == true) {
+			pfc.setText("Ativo");
+		}else {
+			pfc.setText("Desativado");
+		}
 	}
 	
 	public void voltar() throws IOException {

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import iodware.actions.Creator;
+import iodware.pcbuild.Gpu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class GpuController implements Initializable{
@@ -20,10 +23,22 @@ public class GpuController implements Initializable{
 	@FXML
 	private Button botaovoltar;
 	@FXML
+	private Button checar;
+	@FXML
 	public ChoiceBox<String> boxgpu;
+	@FXML
+	public Label nomegpu;
+	@FXML
+	public Label tdpgpu;
+	@FXML
+	public Label clockgpu;
+	@FXML
+	public Label memogpu;
 		
 	ObservableList<String> listgpu = FXCollections.observableArrayList();
 
+	Creator c = new Creator();
+	
 	public void valores_gpu() {
 		listgpu.removeAll();
 		String a = "GTX 1050";
@@ -48,7 +63,12 @@ public class GpuController implements Initializable{
 		
 		nome = boxgpu.getValue();
 		
+		Gpu gpu = c.criarGpu(nome);
 		
+		nomegpu.setText(gpu.getNome());
+		tdpgpu.setText(Integer.toString(gpu.getTdp()));
+		clockgpu.setText(Integer.toString(gpu.getClock()));
+		memogpu.setText(gpu.getMemory());
 	}
 	
 	public void voltar() throws IOException {

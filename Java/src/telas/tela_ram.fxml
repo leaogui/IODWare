@@ -13,11 +13,11 @@
          </image>
       </ImageView>
       <ChoiceBox fx:id="boxram" layoutX="124.0" layoutY="69.0" prefHeight="25.0" prefWidth="316.0" />
-      <Label layoutX="104.0" layoutY="174.0" prefHeight="17.0" prefWidth="404.0" text="Clock" textFill="WHITE" />
-      <Label layoutX="101.0" layoutY="134.0" prefHeight="17.0" prefWidth="355.0" text="Nome" textFill="WHITE" />
+      <Label fx:id="clockram" layoutX="104.0" layoutY="174.0" prefHeight="17.0" prefWidth="404.0" text="Clock" textFill="WHITE" />
+      <Label fx:id="nomeram" layoutX="101.0" layoutY="134.0" prefHeight="17.0" prefWidth="355.0" text="Nome" textFill="WHITE" />
       <Label layoutX="218.0" layoutY="34.0" text="Escolha um pente de ram" textFill="WHITE" />
       <Button fx:id="botaovoltar" layoutX="502.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Label layoutX="101.0" layoutY="214.0" text="Tamanho" textFill="WHITE" />
-      <Button layoutX="404.0" layoutY="361.0" mnemonicParsing="false" text="Checar" />
+      <Label fx:id="tamram" layoutX="101.0" layoutY="214.0" text="Tamanho" textFill="WHITE" />
+      <Button fx:id="checar" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#checar" text="Checar" />
    </children>
 </AnchorPane>

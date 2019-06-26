@@ -47,7 +47,7 @@ public class Psu {
 		this.eightyP = eightyP;
 	}
 	
-	public boolean isPfc() {
+	public boolean getPfc() {
 		return pfc;
 	}
 	public void setPfc(boolean pfc) {

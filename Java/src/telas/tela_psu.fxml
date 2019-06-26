@@ -13,12 +13,12 @@
          </image>
       </ImageView>
       <ChoiceBox fx:id="boxpsu" layoutX="124.0" layoutY="69.0" prefHeight="25.0" prefWidth="316.0" />
-      <Label layoutX="104.0" layoutY="174.0" prefHeight="17.0" prefWidth="404.0" text="Watts" textFill="WHITE" />
-      <Label layoutX="105.0" layoutY="137.0" prefHeight="17.0" prefWidth="355.0" text="Nome" textFill="WHITE" />
+      <Label fx:id="wattspsu" layoutX="104.0" layoutY="174.0" prefHeight="17.0" prefWidth="404.0" text="Watts" textFill="WHITE" />
+      <Label fx:id="nomepsu" layoutX="105.0" layoutY="137.0" prefHeight="17.0" prefWidth="355.0" text="Nome" textFill="WHITE" />
       <Label layoutX="218.0" layoutY="34.0" text="Escolha uma fonte" textFill="WHITE" />
       <Button fx:id="botaovoltar" layoutX="502.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Label layoutX="105.0" layoutY="213.0" text="80+" textFill="WHITE" />
-      <Button layoutX="404.0" layoutY="361.0" mnemonicParsing="false" text="Checar" />
-      <Label layoutX="102.0" layoutY="253.0" text="PFC" textFill="WHITE" />
+      <Label fx:id="eighty" layoutX="105.0" layoutY="213.0" text="80+" textFill="WHITE" />
+      <Button fx:id="checar" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#checar" text="Checar" />
+      <Label fx:id="pfc" layoutX="102.0" layoutY="253.0" text="PFC" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import iodware.actions.Creator;
+import iodware.actions.StringsFinal;
 import iodware.pcbuild.Cpu;
 import iodware.pcbuild.Gpu;
 import iodware.pcbuild.Mobo;
@@ -47,6 +48,7 @@ public class TelaEscolha implements Initializable{
 	public String nomeRam;
 	public String nomeMobo;
 
+	static StringsFinal sf = new StringsFinal();
 	Creator criador = new Creator();
 	
 	ObservableList<String> listgpu = FXCollections.observableArrayList();
@@ -141,12 +143,13 @@ public class TelaEscolha implements Initializable{
 		Cpu cpu = criador.criarCpu(nomeCpu);
 		Psu psu = criador.criarPsu(nomePsu);
 		Ram ram = criador.criarRam(nomeRam);
-		Mobo mobo = criador.criarMobo(nomeMobo);
+		Mobo mobo = criador.criarMobo(nomeMobo); 
 		
 		if(mobo.getSocket() != cpu.getSocket()) {
 			labeltopo.setText("O Socket da placa mãe não pode ser diferente do socket do processador!");
 		}
 		else {
+		validacao(gpu,cpu,psu,ram,mobo);
 		Stage stage = (Stage) botaofinalizar.getScene().getWindow();
 		Parent finali = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));
 		Scene scene = new Scene(finali);
@@ -154,5 +157,39 @@ public class TelaEscolha implements Initializable{
 		stage.setResizable(false);	
 		stage.show();
 		}
+	}
+	
+	public void validacao(Gpu gpu, Cpu cpu, Psu psu, Ram ram, Mobo mobo) {
+		
+		if(mobo.getNome()=="a320" || mobo.getNome()== "h310"){
+			StringsFinal.remobo = "Sua placa mãe não irá suportar upgrades para seu bom hardware no futuro.";
+		}else {
+			StringsFinal.remobo = "Sua placa mãe suportará upgrades.";
+		}
+		
+		if(psu.getWatts() - (cpu.getTdp() + gpu.getTdp()) > 200) {
+			StringsFinal.tdp = "Sua fonte não será confiável para sua build.";
+		}else {
+			StringsFinal.tdp = "Sua fonte suportará bem sua build";
+		}
+		
+		if(mobo.slotmemo > ram.getSize()) {
+			StringsFinal.reram = "Você está usando pouca ram para sua build.";
+		}else {
+			StringsFinal.reram = "Você está usando ram suficiente para sua build";
+		}
+		
+		if(cpu.getNome() == "Ryzen 7 2700" && gpu.getNome() == "GTX 1050" || gpu.getNome() == "GTX 1050 TI"){
+			StringsFinal.cpugpu = "Sua placa de vídeo é fraca para seu processador";
+		}else 
+			if(cpu.getNome() == "Intel Core I7 8700" && gpu.getNome() == "GTX 1050" || gpu.getNome() == "GTX 1050 TI"){
+			StringsFinal.cpugpu = "Sua placa de vídeo é fraca para seu processador";
+		}
+		else{
+			StringsFinal.cpugpu = "Sua placa de vídeo é boa para seu processador";
+			}
+		
+		
+		
 	}
 }

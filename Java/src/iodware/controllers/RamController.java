@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import iodware.actions.Creator;
+import iodware.pcbuild.Ram;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class RamController implements Initializable{
@@ -20,9 +23,19 @@ public class RamController implements Initializable{
 	@FXML
 	private Button botaovoltar;
 	@FXML
+	private Button checar;
+	@FXML
 	public ChoiceBox<String> boxram	;
+	@FXML
+	public Label nomeram;
+	@FXML
+	public Label clockram;
+	@FXML
+	public Label tamram;
 	
 	ObservableList<String> listram = FXCollections.observableArrayList();
+	
+	Creator c = new Creator();
 	
 	public void valores_ram() {
 		listram.removeAll();
@@ -46,7 +59,11 @@ public class RamController implements Initializable{
 		
 		nome = boxram.getValue();
 		
+		Ram ram = c.criarRam(nome);
 		
+		nomeram.setText(ram.getNome());
+		clockram.setText(Integer.toString(ram.getClock()));
+		tamram.setText(Integer.toString(ram.getSize()));
 	}
 	
 	public void voltar() throws IOException {

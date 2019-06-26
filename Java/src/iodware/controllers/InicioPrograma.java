@@ -35,11 +35,6 @@ public class InicioPrograma extends Application {
 		Parent componentes = FXMLLoader.load(getClass().getResource("../../telas/tela_componentes.fxml"));
 		compo = new Scene(componentes);
 		
-/*		
-		Parent resultado = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));	
-		result = new Scene(resultado);
-*/
-		
 		primaryStage.setScene(comeco);
 		primaryStage.show();
 		
@@ -52,9 +47,6 @@ public class InicioPrograma extends Application {
 				break;
 			case "sobre":
 				stage.setScene(about);
-				break;
-			case "resultado":
-				stage.setScene(result);
 				break;
 			case "escolha":
 				stage.setScene(choice);

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import iodware.actions.Creator;
+import iodware.pcbuild.Cpu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class CpuController implements Initializable{
@@ -20,11 +23,24 @@ public class CpuController implements Initializable{
 	@FXML
 	private Button botaovoltar;
 	@FXML
+	private Button checar;
+	@FXML
 	public ChoiceBox<String> boxcpu;
+	@FXML
+	public Label nomecpu;
+	@FXML
+	public Label tdpcpu;
+	@FXML
+	public Label clockcpu;
+	@FXML
+	public Label slotcpu;
+	@FXML
+	public Label corescpu;
 	
 	
 	ObservableList<String> listcpu = FXCollections.observableArrayList();
 	
+	Creator c = new Creator();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +65,13 @@ public class CpuController implements Initializable{
 		
 		nome = boxcpu.getValue();
 		
+		Cpu cpu = c.criarCpu(nome);
 		
+		nomecpu.setText(cpu.getNome());
+		tdpcpu.setText(Integer.toString(cpu.getTdp()));
+		clockcpu.setText(Integer.toString(cpu.getClock()));
+		slotcpu.setText(cpu.getSocket());
+		corescpu.setText(Integer.toString(cpu.getCores()));
 	}
 	
 	public void voltar() throws IOException {
