@@ -15,6 +15,6 @@
       <Button layoutX="86.0" layoutY="56.0" mnemonicParsing="false" onAction="#mudarInicio" prefHeight="65.0" prefWidth="134.0" text="Início" />
       <Button layoutX="86.0" layoutY="150.0" mnemonicParsing="false" onAction="#mudarSobre" prefHeight="65.0" prefWidth="134.0" text="Sobre" />
       <Button layoutX="444.0" layoutY="348.0" mnemonicParsing="false" onAction="#sairPrograma" prefHeight="31.0" prefWidth="89.0" text="Sair" />
-      <Button layoutX="86.0" layoutY="238.0" mnemonicParsing="false" onAction="#mudarComponente" prefHeight="65.0" prefWidth="134.0" text="Ver componentes" />
+      <Button layoutX="86.0" layoutY="238.0" mnemonicParsing="false" onAction="#mudarComponente" prefHeight="65.0" prefWidth="134.0" text="Ver especificações" />
    </children>
 </AnchorPane>

@@ -13,11 +13,11 @@
          </image>
       </ImageView>
       <Label layoutX="163.0" layoutY="36.0" text="Escolha um pente de componente para analisar" textFill="WHITE" />
-      <Button layoutX="204.0" layoutY="82.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="183.0" text="Placa de Video" />
-      <Button layoutX="204.0" layoutY="140.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="183.0" text="Placa Mãe" />
-      <Button layoutX="204.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="183.0" text="RAM" />
-      <Button layoutX="204.0" layoutY="260.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="183.0" text="Processador" />
-      <Button layoutX="204.0" layoutY="321.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="183.0" text="Fonte" />
+      <Button fx:id="botaogpu" layoutX="204.0" layoutY="82.0" mnemonicParsing="false" onAction="#telaGpu" prefHeight="45.0" prefWidth="183.0" text="Placa de Video" />
+      <Button fx:id="botaomobo" layoutX="204.0" layoutY="140.0" mnemonicParsing="false" onAction="#telaMobo" prefHeight="45.0" prefWidth="183.0" text="Placa Mãe" />
+      <Button fx:id="botaoram" layoutX="204.0" layoutY="199.0" mnemonicParsing="false" onAction="#telaRam" prefHeight="45.0" prefWidth="183.0" text="RAM" />
+      <Button fx:id="botaocpu" layoutX="204.0" layoutY="260.0" mnemonicParsing="false" onAction="#telaCpu" prefHeight="45.0" prefWidth="183.0" text="Processador" />
+      <Button fx:id="botaopsu" layoutX="204.0" layoutY="321.0" mnemonicParsing="false" onAction="#telaPsu" prefHeight="45.0" prefWidth="183.0" text="Fonte" />
       <Button fx:id="botaovoltar" layoutX="506.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>
