@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import iodware.actions.Creator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +31,15 @@ public class TelaEscolha implements Initializable{
 	@FXML
 	public ChoiceBox<String> boxmobo;
 	@FXML
-	public ChoiceBox<String> boxram	;
+	public ChoiceBox<String> boxram;
+	
+	public String nomeGpu;
+	public String nomeCpu;
+	public String nomePsu;
+	public String nomeRam;
+	public String nomeMobo;
+
+	Creator criador = new Creator();
 	
 	ObservableList<String> listgpu = FXCollections.observableArrayList();
 	ObservableList<String> listcpu = FXCollections.observableArrayList();
@@ -113,6 +122,16 @@ public class TelaEscolha implements Initializable{
 	}
 	
 	public void finalizar() throws IOException {
+		
+		nomeGpu = boxgpu.getValue();
+		nomeCpu = boxcpu.getValue();
+		nomePsu = boxpsu.getValue();
+		nomeRam = boxram.getValue();
+		nomeMobo = boxmobo.getValue();
+		
+		
+		
+		
 		Stage stage = (Stage) botaofinalizar.getScene().getWindow();
 		Parent finali = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));
 		Scene scene = new Scene(finali);
