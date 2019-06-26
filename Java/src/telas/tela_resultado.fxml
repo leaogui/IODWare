@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iodware.controllers.ResultadoController">
    <children>
       <ImageView fitHeight="414.0" fitWidth="614.0" layoutX="-7.0" layoutY="-7.0">
          <image>
@@ -18,7 +17,7 @@
       <Label layoutX="73.0" layoutY="163.0" text="Resultado GPU/CPU" textFill="WHITE" />
       <Label layoutX="73.0" layoutY="221.0" text="Recomendação Mobo" textFill="WHITE" />
       <Label layoutX="73.0" layoutY="283.0" text="Resultado RAM" textFill="WHITE" />
-      <Button layoutX="52.0" layoutY="361.0" mnemonicParsing="false" text="Voltar" />
-      <Button layoutX="450.0" layoutY="361.0" mnemonicParsing="false" text="Início" />
+      <Button fx:id="botaovoltar" layoutX="52.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button fx:id="botaoinicio" layoutX="450.0" layoutY="361.0" mnemonicParsing="false" onAction="#inicio" text="Início" />
    </children>
 </AnchorPane>

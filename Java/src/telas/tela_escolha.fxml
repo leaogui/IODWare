@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iodware.controllers.TelaEscolha">
    <children>
       <ImageView fitHeight="412.0" fitWidth="613.0" layoutX="-7.0" layoutY="-6.0">
          <image>
@@ -14,7 +13,7 @@
          </image>
       </ImageView>
       <Button layoutX="487.0" layoutY="361.0" mnemonicParsing="false" text="Finalizar" />
-      <Button layoutX="42.0" layoutY="361.0" mnemonicParsing="false" text="Voltar" />
+      <Button fx:id="botaovoltar" layoutX="42.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
       <Label layoutX="239.0" layoutY="27.0" text="Escolha as peças" textFill="WHITE" />
       <MenuButton layoutX="209.0" layoutY="82.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="325.0" text="-">
         <items>

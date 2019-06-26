@@ -5,16 +5,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iodware.controllers.InicioController">
    <children>
       <ImageView fitHeight="413.0" fitWidth="615.0" layoutX="-8.0" layoutY="-7.0">
          <image>
             <Image url="@../../imagens/inicio.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="86.0" layoutY="56.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="134.0" text="Início" />
-      <Button layoutX="86.0" layoutY="150.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="134.0" text="Sobre" />
-      <Button layoutX="86.0" layoutY="246.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="134.0" text="Sair" />
+      <Button layoutX="86.0" layoutY="56.0" mnemonicParsing="false" onAction="#mudarInicio" prefHeight="65.0" prefWidth="134.0" text="Início" />
+      <Button layoutX="86.0" layoutY="150.0" mnemonicParsing="false" onAction="#mudarSobre" prefHeight="65.0" prefWidth="134.0" text="Sobre" />
+      <Button layoutX="444.0" layoutY="348.0" mnemonicParsing="false" onAction="#sairPrograma" prefHeight="31.0" prefWidth="89.0" text="Sair" />
+      <Button layoutX="86.0" layoutY="238.0" mnemonicParsing="false" onAction="#mudarComponente" prefHeight="65.0" prefWidth="134.0" text="Ver componentes" />
    </children>
 </AnchorPane>

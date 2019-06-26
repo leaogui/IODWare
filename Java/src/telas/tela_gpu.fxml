@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iodware.controllers.GpuController">
+   <children>
+      <ImageView fitHeight="411.0" fitWidth="611.0" layoutX="-7.0" layoutY="-7.0">
+         <image>
+            <Image url="@../../imagens/fundopreto.jpg" />
+         </image>
+      </ImageView>
+      <ChoiceBox layoutX="124.0" layoutY="69.0" prefHeight="25.0" prefWidth="316.0" />
+      <Label layoutX="104.0" layoutY="174.0" prefHeight="17.0" prefWidth="404.0" text="TDP" textFill="WHITE" />
+      <Label layoutX="101.0" layoutY="134.0" prefHeight="17.0" prefWidth="355.0" text="Nome" textFill="WHITE" />
+      <Label layoutX="218.0" layoutY="34.0" text="Escolha uma placa de vídeo" textFill="WHITE" />
+      <Button layoutX="502.0" layoutY="361.0" mnemonicParsing="false" text="Voltar" />
+      <Label layoutX="101.0" layoutY="214.0" text="Clock" textFill="WHITE" />
+      <Label layoutX="101.0" layoutY="255.0" text="Memoria" textFill="WHITE" />
+      <Button layoutX="404.0" layoutY="361.0" mnemonicParsing="false" text="Checar" />
+   </children>
+</AnchorPane>
