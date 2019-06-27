@@ -28,9 +28,7 @@ public class EscolhaComponentes implements Initializable {
 	private Button botaomobo;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+	public void initialize(URL location, ResourceBundle resources) {	
 	}
 
 	public void voltar() throws IOException {

@@ -12,7 +12,7 @@
             <Image url="@../../imagens/fundopreto.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="163.0" layoutY="36.0" text="Escolha um pente de componente para analisar" textFill="WHITE" />
+      <Label layoutX="163.0" layoutY="36.0" text="Escolha uma parte de componente para analisar" textFill="WHITE" />
       <Button fx:id="botaogpu" layoutX="204.0" layoutY="82.0" mnemonicParsing="false" onAction="#telaGpu" prefHeight="45.0" prefWidth="183.0" text="Placa de Video" />
       <Button fx:id="botaomobo" layoutX="204.0" layoutY="140.0" mnemonicParsing="false" onAction="#telaMobo" prefHeight="45.0" prefWidth="183.0" text="Placa Mãe" />
       <Button fx:id="botaoram" layoutX="204.0" layoutY="199.0" mnemonicParsing="false" onAction="#telaRam" prefHeight="45.0" prefWidth="183.0" text="RAM" />

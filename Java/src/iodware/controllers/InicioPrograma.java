@@ -1,5 +1,6 @@
 package iodware.controllers;
 
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -18,7 +19,6 @@ public class InicioPrograma extends Application {
 	private static Scene comeco;
 	private static Scene choice;
 	private static Scene about;
-	private static Scene result;
 	private static Scene compo;
 
 	@Override
@@ -62,6 +62,7 @@ public class InicioPrograma extends Application {
 	}
 	
 	public static void main(String[] args) {
+
 		try {
 			System.out.println("01");
 			ConnectionJDBC.retornaCpu();
@@ -73,6 +74,9 @@ public class InicioPrograma extends Application {
 		}
 		launch(args);
 		FXMLLoader loader  = new FXMLLoader();
+
+		launch(args);		
+
 	}
 	
 	public static void fechar() {
