@@ -12,12 +12,12 @@ public class Mobo {
 		this.saidas = saidas;
 	}
 	
-	public String nome;
-	public String modelo;
-	public String socket;
-	public int slotmemo;
-	public int slotpci;
-	public String saidas;
+	private String nome;
+	private String modelo;
+	private String socket;
+	private int slotmemo;
+	private int slotpci;
+	private String saidas;
 	
 	public String getNome() {
 		return nome;

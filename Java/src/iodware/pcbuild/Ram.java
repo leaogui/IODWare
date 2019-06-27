@@ -11,10 +11,10 @@ public class Ram {
 		this.size = size;
 	}
 	
-	public String nome;
-	public String gen;
-	public int clock;
-	public int size;
+	private String nome;
+	private String gen;
+	private int clock;
+	private int size;
 	
 	public String getNome() {
 		return nome;

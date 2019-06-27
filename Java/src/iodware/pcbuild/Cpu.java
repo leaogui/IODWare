@@ -15,14 +15,14 @@ public class Cpu {
 		this.tdp = tdp;
 	}
 	
-	public int clock;
-	public String nome;
-	public int cores;
-	public String modelo;
-	public String socket;
-	public String gen;
-	public boolean mthread;
-	public int tdp;
+	private int clock;
+	private String nome;
+	private int cores;
+	private String modelo;
+	private String socket;
+	private String gen;
+	private boolean mthread;
+	private int tdp;
 	
 	public int getClock() {
 		return clock;

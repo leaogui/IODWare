@@ -173,7 +173,7 @@ public class TelaEscolha implements Initializable{
 			StringsFinal.tdp = "Sua fonte suportará bem sua build";
 		}
 		
-		if(mobo.slotmemo > ram.getSize()) {
+		if(mobo.getSlotmemo() > ram.getSize()) {
 			StringsFinal.reram = "Você está usando pouca ram para sua build.";
 		}else {
 			StringsFinal.reram = "Você está usando ram suficiente para sua build";

@@ -13,11 +13,11 @@ public class Psu {
 		this.pfc = pfc;
 	}
 	
-	public String nome;
-	public int watts;
-	public int seisPinos;
-	public String eightyP;
-	public boolean pfc;
+	private String nome;
+	private int watts;
+	private int seisPinos;
+	private String eightyP;
+	private boolean pfc;
 	
 	public String getNome() {
 		return nome;

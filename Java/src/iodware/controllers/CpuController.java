@@ -69,7 +69,7 @@ public class CpuController implements Initializable{
 		
 		nomecpu.setText(cpu.getNome());
 		tdpcpu.setText(Integer.toString(cpu.getTdp()));
-		clockcpu.setText(Integer.toString(cpu.getClock()));
+		clockcpu.setText(Integer.toString(cpu.getClock())+"GHZ");
 		slotcpu.setText(cpu.getSocket());
 		corescpu.setText(Integer.toString(cpu.getCores()));
 	}

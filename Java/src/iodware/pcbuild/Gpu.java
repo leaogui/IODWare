@@ -15,14 +15,14 @@ public class Gpu {
 		this.tdp = tdp;
 	}
 	
-	public int clock;
-	public String nome;
-	public String memory;
-	public String modelo;
-	public String slot;
-	public int ventoinhas;
-	public String Saidas;
-	public int tdp;
+	private int clock;
+	private String nome;
+	private String memory;
+	private String modelo;
+	private String slot;
+	private int ventoinhas;
+	private String Saidas;
+	private int tdp;
 	
 	
 	public int getClock() {
