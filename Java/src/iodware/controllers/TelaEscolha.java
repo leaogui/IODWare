@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.actions.StringsFinal;
 import iodware.pcbuild.Cpu;
@@ -144,24 +149,165 @@ public class TelaEscolha implements Initializable{
 		Psu psu = criador.criarPsu(nomePsu);
 		Ram ram = criador.criarRam(nomeRam);
 		Mobo mobo = criador.criarMobo(nomeMobo); 
+			
 		
-		if(mobo.getSocket() != cpu.getSocket()) {
-			labeltopo.setText("O Socket da placa mãe não pode ser diferente do socket do processador!");
+		// Conexão Processador
+		
+		
+		Connection con = Conexao.getConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM cpu WHERE nome = ?");
+
+			ps.setString(1, nomeCpu);
+
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+				cpu.setNome(rs.getString("nome"));
+				cpu.setClock(rs.getInt("clock"));
+				cpu.setCores(rs.getInt("cores"));
+				cpu.setModelo(rs.getString("modelo"));
+				cpu.setSocket(rs.getString("socket"));
+				cpu.setGen(rs.getString("geracao"));
+				cpu.setMthread(rs.getBoolean("MultiThread"));
+				cpu.setTdp(rs.getInt("pdu"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con);
 		}
+		
+			
+		// Conexão Placa Mãe
+		
+		
+		Connection con1 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con1.prepareStatement("SELECT * FROM placaMae WHERE nome = ?");
+
+		ps.setString(1, nomeMobo);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			mobo.setNome(rs.getString("nome"));
+			mobo.setModelo(rs.getString("modelo"));
+			mobo.setSocket(rs.getString("socket"));
+			mobo.setSlotmemo(rs.getInt("slot_memo"));
+			mobo.setSlotpci(rs.getInt("slot_pci"));
+			mobo.setSaidas(rs.getString("saidas"));
+	
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con1);
+		}	
+		
+		
+		// Conexão Ram
+		
+		
+		Connection con2 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con2.prepareStatement("SELECT * FROM ram WHERE nome = ?");
+
+		ps.setString(1, nomeRam);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			ram.setNome(rs.getString("nome"));
+			ram.setGen(rs.getString("geracao"));
+			ram.setClock(rs.getInt("clock"));
+			ram.setSize(rs.getInt("tamanho"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con2);
+		}
+			
+		
+		// Conexão Fonte
+		
+		Connection con3 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con3.prepareStatement("SELECT * FROM fonte WHERE nome = ?");
+
+		ps.setString(1, nomePsu);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			psu.setNome(rs.getString("nome"));
+			psu.setWatts(rs.getInt("watts"));
+			psu.setSeisPinos(rs.getInt("cabosSeisPinos"));
+			psu.setEightyP(rs.getString("eightyplus"));
+			psu.setPfc(rs.getBoolean("pfc"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con3);
+		}
+		
+		
+		// Conexão Placa de Vídeo
+		
+		Connection con4 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con4.prepareStatement("SELECT * FROM placaVideo WHERE nome = ?");
+
+		ps.setString(1, nomeGpu);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			gpu.setClock(rs.getInt("clock"));
+			gpu.setNome(rs.getString("nome"));
+			gpu.setMemory(rs.getString("memoria"));
+			gpu.setModelo(rs.getString("modelo"));
+			gpu.setSlot(rs.getString("slot"));
+			gpu.setVentoinhas(rs.getInt("ventoinhas"));
+			gpu.setSaidas(rs.getString("saidas"));
+			gpu.setTdp(rs.getInt("pdu"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con4);
+		}
+			
+		
+		if(mobo.getSocket().equals(cpu.getSocket())) {
+			validacao(gpu,cpu,psu,ram,mobo);
+			Stage stage = (Stage) botaofinalizar.getScene().getWindow();
+			Parent finali = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));
+			Scene scene = new Scene(finali);
+			stage.setScene(scene);
+			stage.setResizable(false);	
+			stage.show();			
+		} 
 		else {
-		validacao(gpu,cpu,psu,ram,mobo);
-		Stage stage = (Stage) botaofinalizar.getScene().getWindow();
-		Parent finali = FXMLLoader.load(getClass().getResource("../../telas/tela_resultado.fxml"));
-		Scene scene = new Scene(finali);
-		stage.setScene(scene);
-		stage.setResizable(false);	
-		stage.show();
+			labeltopo.setText("O Socket da placa mãe não pode ser diferente do socket do processador!");
 		}
 	}
 	
 	public void validacao(Gpu gpu, Cpu cpu, Psu psu, Ram ram, Mobo mobo) {
 		
-		if(mobo.getNome()=="a320" || mobo.getNome()== "h310"){
+		if(mobo.getNome().equals("a320") || mobo.getNome().equals("h310")){
 			StringsFinal.remobo = "Sua placa mãe não irá suportar upgrades para seu bom hardware no futuro.";
 		}else {
 			StringsFinal.remobo = "Sua placa mãe suportará upgrades.";
@@ -179,10 +325,10 @@ public class TelaEscolha implements Initializable{
 			StringsFinal.reram = "Você está usando ram suficiente para sua build";
 		}
 		
-		if(cpu.getNome() == "Ryzen 7 2700" && gpu.getNome() == "GTX 1050" || gpu.getNome() == "GTX 1050 TI"){
+		if(cpu.getNome().equals("Ryzen 7 2700") && gpu.getNome().equals("GTX 1050") || gpu.getNome().equals("GTX 1050 TI")){
 			StringsFinal.cpugpu = "Sua placa de vídeo é fraca para seu processador";
 		}else 
-			if(cpu.getNome() == "Intel Core I7 8700" && gpu.getNome() == "GTX 1050" || gpu.getNome() == "GTX 1050 TI"){
+			if(cpu.getNome().equals("Intel Core I7 8700") && gpu.getNome().equals("GTX 1050") || gpu.getNome().equals("GTX 1050 TI")){
 			StringsFinal.cpugpu = "Sua placa de vídeo é fraca para seu processador";
 		}
 		else{

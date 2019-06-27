@@ -96,7 +96,7 @@ insert into placaVideo values
 
 insert into cpu values
 (1,"Intel Core I5 8400","i5","1151",4,6,"8",false,65),
-(2,"Intel Core I7 8700","i7","1551",4,6,"8",true,65),
+(2,"Intel Core I7 8700","i7","1151",4,6,"8",true,65),
 (3,"Ryzen 5 2600","r5","am4",4,6,"zen 2",true,65),
 (4,"Ryzen 7 2700","r7","am4",4,8,"zen 2",true,64);
 
@@ -106,9 +106,9 @@ insert into ram values
 (3,"Pente 16gb","DDR4",2400,16);
 
 insert into placaMae values
-(1,"h310","h310","1551",2,1,"4 USB 3.0"),
-(2,"b360","b360","1551",4,2,"6 USB 3.0"),
-(3,"z370","z370","1551",8,3,"4 USB 3.0, 2 USB 3.1"),
+(1,"h310","h310","1151",2,1,"4 USB 3.0"),
+(2,"b360","b360","1151",4,2,"6 USB 3.0"),
+(3,"z370","z370","1151",8,3,"4 USB 3.0, 2 USB 3.1"),
 (4,"a320","a320","am4",2,1,"4 USB 3.0"),
 (5,"b350","b350","am4",4,2,"6 USB 3.0"),
 (6,"x370","x370","am4",8,3,"4 USB 3.0, 2 USB 3.1");
@@ -118,3 +118,5 @@ insert into fonte values
 (1,"400 Watts",400,"bronze",2,true),
 (2,"500 Watts",500,"silver",2,true),
 (3,"600 Watts",600,"gold",3,true);
+
+
