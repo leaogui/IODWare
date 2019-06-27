@@ -1,11 +1,7 @@
 package iodware.controllers;
 
 
-import java.io.IOException;
-import java.sql.SQLException;
 
-import iodware.actions.Creator;
-import iodware.infra.ConnectionJDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,19 +58,6 @@ public class InicioPrograma extends Application {
 	}
 	
 	public static void main(String[] args) {
-
-		try {
-			System.out.println("01");
-			ConnectionJDBC.retornaCpu();
-			System.out.println("0fim");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		launch(args);
-		FXMLLoader loader  = new FXMLLoader();
-
 		launch(args);		
 
 	}

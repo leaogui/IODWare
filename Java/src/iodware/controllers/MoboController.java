@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.pcbuild.Mobo;
 import javafx.collections.FXCollections;
@@ -70,11 +75,36 @@ public class MoboController implements Initializable{
 		
 		Mobo mobo = c.criarMobo(nome);
 		
+		Connection con1 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con1.prepareStatement("SELECT * FROM placaMae WHERE nome = ?");
+
+		ps.setString(1, nome);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			mobo.setNome(rs.getString("nome"));
+			mobo.setModelo(rs.getString("modelo"));
+			mobo.setSocket(rs.getString("socket"));
+			mobo.setSlotmemo(rs.getInt("slot_memo"));
+			mobo.setSlotpci(rs.getInt("slot_pci"));
+			mobo.setSaidas(rs.getString("saidas"));
+	
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con1);
+		}	
+		
 		nomemobo.setText(mobo.getNome());
 		modmobo.setText(mobo.getModelo());
-		socketmobo.setText(mobo.getSocket());
-		slotrammobo.setText(Integer.toString(mobo.getSlotmemo()));
-		slotpcimobo.setText(Integer.toString(mobo.getSlotpci()));
+		socketmobo.setText("Socket "+mobo.getSocket());
+		slotrammobo.setText(Integer.toString(mobo.getSlotmemo())+" Slots de RAM");
+		slotpcimobo.setText(Integer.toString(mobo.getSlotpci())+" Slots PCI");
 	}
 	
 	public void voltar() throws IOException {

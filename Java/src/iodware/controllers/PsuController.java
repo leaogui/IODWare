@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.pcbuild.Psu;
 import javafx.collections.FXCollections;
@@ -63,13 +68,36 @@ public class PsuController implements Initializable{
 		
 		Psu psu = c.criarPsu(nome);
 		
-		nomepsu.setText(psu.getNome());
-		wattspsu.setText(Integer.toString(psu.getWatts()));
-		eighty.setText(psu.getEightyP());
+		Connection con3 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con3.prepareStatement("SELECT * FROM fonte WHERE nome = ?");
+
+		ps.setString(1, nome);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			psu.setNome(rs.getString("nome"));
+			psu.setWatts(rs.getInt("watts"));
+			psu.setSeisPinos(rs.getInt("cabosSeisPinos"));
+			psu.setEightyP(rs.getString("eightyplus"));
+			psu.setPfc(rs.getBoolean("pfc"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con3);
+		}
+		
+		nomepsu.setText("Fonte "+psu.getNome());
+		wattspsu.setText(Integer.toString(psu.getWatts())+"Watts");
+		eighty.setText("80+"+psu.getEightyP());
 		if(psu.getPfc() == true) {
-			pfc.setText("Ativo");
+			pfc.setText("Pfc Ativo");
 		}else {
-			pfc.setText("Desativado");
+			pfc.setText("Pfc Desativado");
 		}
 	}
 	

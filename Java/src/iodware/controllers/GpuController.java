@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.pcbuild.Gpu;
 import javafx.collections.FXCollections;
@@ -37,7 +42,7 @@ public class GpuController implements Initializable{
 		
 	ObservableList<String> listgpu = FXCollections.observableArrayList();
 
-	Creator c = new Creator();
+	Creator criador = new Creator();
 	
 	public void valores_gpu() {
 		listgpu.removeAll();
@@ -63,11 +68,38 @@ public class GpuController implements Initializable{
 		
 		nome = boxgpu.getValue();
 		
-		Gpu gpu = c.criarGpu(nome);
+		Gpu gpu = criador.criarGpu(nome);
+		
+		Connection con4 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con4.prepareStatement("SELECT * FROM placaVideo WHERE nome = ?");
+
+		ps.setString(1, nome);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			gpu.setClock(rs.getInt("clock"));
+			gpu.setNome(rs.getString("nome"));
+			gpu.setMemory(rs.getString("memoria"));
+			gpu.setModelo(rs.getString("modelo"));
+			gpu.setSlot(rs.getString("slot"));
+			gpu.setVentoinhas(rs.getInt("ventoinhas"));
+			gpu.setSaidas(rs.getString("saidas"));
+			gpu.setTdp(rs.getInt("pdu"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con4);
+		}
+			
 		
 		nomegpu.setText(gpu.getNome());
-		tdpgpu.setText(Integer.toString(gpu.getTdp()));
-		clockgpu.setText(Integer.toString(gpu.getClock()));
+		tdpgpu.setText(Integer.toString(gpu.getTdp())+"TDP");
+		clockgpu.setText(Integer.toString(gpu.getClock())+"MHZ");
 		memogpu.setText(gpu.getMemory());
 	}
 	

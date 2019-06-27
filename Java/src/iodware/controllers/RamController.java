@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.pcbuild.Ram;
 import javafx.collections.FXCollections;
@@ -61,9 +66,31 @@ public class RamController implements Initializable{
 		
 		Ram ram = c.criarRam(nome);
 		
+		Connection con2 = Conexao.getConnection();
+		try {
+
+		PreparedStatement ps = con2.prepareStatement("SELECT * FROM ram WHERE nome = ?");
+
+		ps.setString(1, nome);
+
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			ram.setNome(rs.getString("nome"));
+			ram.setGen(rs.getString("geracao"));
+			ram.setClock(rs.getInt("clock"));
+			ram.setSize(rs.getInt("tamanho"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con2);
+		}
+		
 		nomeram.setText(ram.getNome());
-		clockram.setText(Integer.toString(ram.getClock()));
-		tamram.setText(Integer.toString(ram.getSize()));
+		clockram.setText(Integer.toString(ram.getClock())+"MHZ");
+		tamram.setText(Integer.toString(ram.getSize())+"GB");
 	}
 	
 	public void voltar() throws IOException {

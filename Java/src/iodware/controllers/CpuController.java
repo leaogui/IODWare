@@ -2,8 +2,13 @@ package iodware.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import iodware.actions.Conexao;
 import iodware.actions.Creator;
 import iodware.pcbuild.Cpu;
 import javafx.collections.FXCollections;
@@ -67,11 +72,37 @@ public class CpuController implements Initializable{
 		
 		Cpu cpu = c.criarCpu(nome);
 		
+		Connection con = Conexao.getConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM cpu WHERE nome = ?");
+
+			ps.setString(1, nome);
+
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+				cpu.setNome(rs.getString("nome"));
+				cpu.setClock(rs.getInt("clock"));
+				cpu.setCores(rs.getInt("cores"));
+				cpu.setModelo(rs.getString("modelo"));
+				cpu.setSocket(rs.getString("socket"));
+				cpu.setGen(rs.getString("geracao"));
+				cpu.setMthread(rs.getBoolean("MultiThread"));
+				cpu.setTdp(rs.getInt("pdu"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("ERRO");
+			e.printStackTrace();
+		}finally {
+			Conexao.closeConnection(con);
+		}
+		
 		nomecpu.setText(cpu.getNome());
-		tdpcpu.setText(Integer.toString(cpu.getTdp()));
+		tdpcpu.setText(Integer.toString(cpu.getTdp())+" TDP");
 		clockcpu.setText(Integer.toString(cpu.getClock())+"GHZ");
-		slotcpu.setText(cpu.getSocket());
-		corescpu.setText(Integer.toString(cpu.getCores()));
+		slotcpu.setText("Socket "+cpu.getSocket());
+		corescpu.setText(Integer.toString(cpu.getCores())+" Cores");
 	}
 	
 	public void voltar() throws IOException {

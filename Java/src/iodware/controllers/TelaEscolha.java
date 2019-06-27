@@ -313,7 +313,7 @@ public class TelaEscolha implements Initializable{
 			StringsFinal.remobo = "Sua placa mãe suportará upgrades.";
 		}
 		
-		if(psu.getWatts() - (cpu.getTdp() + gpu.getTdp()) > 200) {
+		if(psu.getWatts() - (cpu.getTdp() + gpu.getTdp()) < 200) {
 			StringsFinal.tdp = "Sua fonte não será confiável para sua build.";
 		}else {
 			StringsFinal.tdp = "Sua fonte suportará bem sua build";
