@@ -1,6 +1,5 @@
 package iodware.controllers;
 
-import iodware.actions.Creator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +13,6 @@ public class InicioPrograma extends Application {
 	private static Scene comeco;
 	private static Scene choice;
 	private static Scene about;
-	private static Scene result;
 	private static Scene compo;
 
 	@Override
@@ -58,9 +56,7 @@ public class InicioPrograma extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
-		FXMLLoader loader  = new FXMLLoader();
-		
+		launch(args);		
 	}
 	
 	public static void fechar() {
