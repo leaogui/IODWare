@@ -18,9 +18,7 @@ public class SobreController implements Initializable{
 	private Button botaovoltar;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+	public void initialize(URL location, ResourceBundle resources) {		
 	}
 	
 	public void voltar() throws IOException {
